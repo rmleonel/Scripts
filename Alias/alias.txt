@@ -1,0 +1,7 @@
+Los alias se guardan en el archivo ~/.bashrc
+
+Aca solo estan anotados para que te acuerdes:
+
+Alias: puertos = gestionpuertosyservicios.sh 
+Alias: eliminar = eliminarprograma.sh
+Alias clamav = clamav.sh

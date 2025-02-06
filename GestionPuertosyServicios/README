@@ -1,0 +1,85 @@
+Manual de Gestión de Servicios y Firewall (UFW)
+
+Este script interactivo está diseñado para facilitar la gestión de servicios y configuraciones de firewall en un sistema Linux. A continuación, se describen todas las opciones y cómo utilizarlas.
+Menú Principal
+
+Al ejecutar el script, se muestra el siguiente menú:
+
+=== Gestión de Servicios y Firewall ===
+1) Listar servicios
+2) Iniciar servicio
+3) Detener servicio
+4) Ver estado de UFW y servicios en los puertos
+5) Abrir puerto en UFW
+6) Cerrar puerto en UFW
+7) Salir
+
+Selecciona el número correspondiente a la acción que deseas realizar. A continuación, te explico qué hace cada opción.
+1) Listar Servicios
+
+Al seleccionar la opción 1, el script mostrará todos los servicios activos en tu sistema, utilizando el comando systemctl list-units --type=service --no-pager.
+Opciones después de listar los servicios:
+
+    a) Iniciar un servicio: Puedes elegir iniciar un servicio escribiendo su nombre.
+    b) Detener un servicio: Puedes elegir detener un servicio escribiendo su nombre.
+    c) Volver al menú principal: Si decides no realizar ninguna acción, puedes volver al menú principal.
+
+¿Cómo iniciar o detener un servicio?
+
+    El script te pedirá que confirmes la acción antes de proceder, por ejemplo: ¿Está seguro de que desea iniciar el servicio?.
+    Si el nombre del servicio está vacío o incorrecto, el script te lo notificará y no hará nada.
+
+2) Iniciar un Servicio
+
+Al elegir la opción 2, el script te pedirá que ingreses el nombre de un servicio para iniciarlo.
+
+    Si el nombre es válido, el script usará el comando sudo systemctl start <nombre_del_servicio> para iniciar el servicio.
+    Si el servicio se inicia correctamente, te lo notificará. Si hay un error, también lo informará.
+
+3) Detener un Servicio
+
+La opción 3 te permite detener un servicio. Al seleccionarla:
+
+    El script te pedirá el nombre del servicio a detener.
+    Si el servicio existe, te preguntará si estás seguro de detenerlo. Si confirmas, usará el comando sudo systemctl stop <nombre_del_servicio>.
+    Si se detiene correctamente, el script te lo informará.
+
+4) Ver Estado de UFW y Servicios en los Puertos
+
+Al elegir la opción 4, el script mostrará dos cosas importantes:
+
+    Estado de UFW: Utilizando el comando sudo ufw status verbose, te mostrará si el firewall está activo y qué reglas tiene configuradas.
+    Servicios en los puertos abiertos: Verás los servicios que están escuchando en los puertos abiertos de tu máquina, usando el comando sudo ss -tulnp. Esto te ayudará a ver qué servicios están accesibles a través de la red.
+
+5) Abrir un Puerto en UFW
+
+Si seleccionas la opción 5, podrás abrir un puerto en el firewall UFW:
+
+    El script te pedirá el número del puerto que deseas abrir.
+    Luego, te preguntará si estás seguro de abrirlo.
+    Si confirmas, el script usará el comando sudo ufw allow <puerto>/tcp para permitir el tráfico a ese puerto.
+    Si todo sale bien, te notificará que el puerto fue abierto.
+
+6) Cerrar un Puerto en UFW
+
+Con la opción 6, puedes cerrar un puerto en UFW:
+
+    El script pedirá el número del puerto que quieres cerrar.
+    Luego, te preguntará si estás seguro de cerrarlo.
+    Si confirmas, usará el comando sudo ufw deny <puerto>/tcp para bloquear el tráfico hacia ese puerto.
+    Te informará si el puerto se cerró correctamente.
+
+7) Salir
+
+Si decides salir del script, puedes seleccionar la opción 7. El script imprimirá "Saliendo..." y terminará su ejecución.
+Recomendaciones y Consejos
+
+    Confirmación de Acciones: Siempre que realices una acción importante como iniciar, detener servicios o modificar puertos en el firewall, el script te pedirá confirmación. Esto ayuda a evitar errores por accidente.
+    Validación de Entradas: El script valida que el nombre de los servicios y puertos sea correcto antes de ejecutar comandos. Si dejas un campo vacío o escribes algo incorrecto, el script te lo notificará.
+    Permisos de Superusuario: Algunas acciones requieren permisos de superusuario (como iniciar/detener servicios o modificar el firewall), por lo que necesitarás tener permisos de sudo en tu sistema.
+
+Conclusión
+
+Este script es una herramienta útil para gestionar servicios y el firewall en tu sistema Linux de manera sencilla y rápida. Con su menú interactivo, puedes controlar fácilmente qué servicios se inician o detienen, y cómo configurar los puertos abiertos o cerrados en UFW.
+
+¡Con este manual, ya sabes cómo utilizarlo paso a paso! Si tienes alguna duda o necesitas más ayuda, no dudes en preguntar
