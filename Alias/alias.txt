@@ -5,3 +5,4 @@ Aca solo estan anotados para que te acuerdes:
 Alias: puertos = gestionpuertosyservicios.sh 
 Alias: eliminar = eliminarprograma.sh
 Alias clamav = clamav.sh
+Alias togglerclone = toggle_rclone.sh 
